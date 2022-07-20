@@ -1,0 +1,2 @@
+# ios_test_application
+IOSのWidget動作と並行処理の確認アプリ
