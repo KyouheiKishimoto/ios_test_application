@@ -10,4 +10,4 @@ sdk: ">=2.15.0 <3.0.0"
 
 ### 参考画面
 
-<img src="https://user-images.githubusercontent.com/65929053/179922580-a035dbf5-bb28-4f96-bd1a-bea4c1004bb3.gif" width="400">
+<img src="https://user-images.githubusercontent.com/65929053/179922580-a035dbf5-bb28-4f96-bd1a-bea4c1004bb3.gif" width="200">
