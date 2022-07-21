@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'dart:isolate';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_test_application/adapter/weather_list.dart';
-import 'package:ios_test_application/models/model/prefectures_model.dart';
 import 'package:ios_test_application/models/model/weather_entity.dart';
 import 'package:ios_test_application/viewmodels/account_viewmodel.dart';
 
@@ -40,7 +38,9 @@ class _AccountPage extends State<AccountPage> {
             floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () async {
+                //シングルスレッド処理
                 // await _getWetherData();
+                // マルチスレッド処理
                 await _getWetherDataIsolate();
                 setState(() => _weatherEntity);
               },
@@ -71,12 +71,12 @@ class _AccountPage extends State<AccountPage> {
     }
   }
 
-
+  /// シングルスレッドで天気APIの情報をセットする
   static _getWetherData() async {
     List<String> number = ["471010", "020010", "060010", "070010"];
 
     for (int i = 0; i < number.length; i++) {
-      await _accountViewModel.getWeatherDataIsolate(number[i]);
+      await _accountViewModel.getWeatherData(number[i]);
       final weatherEntity = _accountViewModel.weatherEntity;
       if (weatherEntity != null) {
         _weatherEntity.add(weatherEntity);
@@ -84,6 +84,7 @@ class _AccountPage extends State<AccountPage> {
     }
   }
 
+  /// マルチスレッドで天気APIの情報をセットする
   static _getWetherDataIsolate() async {
     List<String> number = ["471010", "020010", "060010", "070010"];
 

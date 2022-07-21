@@ -1,18 +1,17 @@
-
 import 'dart:isolate';
-import 'dart:io';
 
 import 'package:chopper/chopper.dart';
 import 'package:ios_test_application/models/model/weather_entity.dart';
 import 'package:ios_test_application/models/networking/weather_api_service.dart';
 
 class AccountViewModel {
-
   final WeatherApiService _apiService = WeatherApiService.create();
 
   WeatherEntity? _weatherEntity;
+
   WeatherEntity? get weatherEntity => _weatherEntity;
 
+  /// シングル
   getWeatherData(String prefectureNumber) async {
     Response response;
     try {
@@ -25,6 +24,7 @@ class AccountViewModel {
     }
   }
 
+  /// マルチ
   getWeatherDataIsolate(String prefectureNumber) async {
     Response response;
     final receivePort = ReceivePort();
@@ -52,5 +52,4 @@ class AccountViewModel {
       send.send(WeatherEntity.fromJson(data));
     });
   }
-
 }

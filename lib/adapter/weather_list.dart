@@ -13,9 +13,6 @@ Widget weatherListComponent(WeatherEntity weatherData) {
           children: [
             Text(weatherData.title),
             Text(weatherData.description.bodyText),
-            Row(children: [
-              Text("3日間の天気"),
-            ],),
           ],
         ),
       ),

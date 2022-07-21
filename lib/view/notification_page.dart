@@ -105,16 +105,16 @@ class _NotificationPage extends State<NotificationPage> {
 
     final isolate = await Isolate.spawn(child, sendPort);
 
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       print("pausing");
       capability = isolate.pause();
     });
-    Timer(const Duration(seconds: 10), () {
+    Timer(const Duration(seconds: 5), () {
       print("resume");
       isolate.resume(capability);
     });
 
-    Timer(const Duration(seconds: 15), () {
+    Timer(const Duration(seconds: 8), () {
       print("kill");
       isolate.kill();
     });
@@ -126,8 +126,7 @@ class _NotificationPage extends State<NotificationPage> {
 
   /// 同期処理
   _incrementCounter() async {
-    Timer(const Duration(seconds: 5), () {
-      print("シングル");
+    Timer(const Duration(seconds: 3), () {
       setState(() {
         _counter++;
       });
