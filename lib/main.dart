@@ -276,9 +276,8 @@ class _WidgetListState extends State<WidgetList> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Platform.isIOS ? _showIOSSlidingSegmentedControl() : _showAndroidTabBar(),
+      _showIOSSlidingSegmentedControl(),
       const SizedBox(height: 30),
-      if(Platform.isIOS)
       SizedBox(
         width: double.infinity,
         child: CupertinoButton(
@@ -292,9 +291,7 @@ class _WidgetListState extends State<WidgetList> {
         width: double.infinity,
         child: CupertinoButton(
           color: CupertinoColors.systemRed,
-          onPressed: () => Platform.isIOS
-              ? _showIOSAlertDialog(context)
-              : _showAndroidAlertDialog(context),
+          onPressed: () => _showIOSAlertDialog(context),
           child: const Text('アラートダイアログ'),
         ),
       ),

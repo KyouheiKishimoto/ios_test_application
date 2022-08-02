@@ -1,6 +1,8 @@
 import 'dart:isolate';
 
 import 'package:chopper/chopper.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ios_test_application/models/model/weather_entity.dart';
 import 'package:ios_test_application/models/networking/weather_api_service.dart';
 
@@ -20,7 +22,15 @@ class AccountViewModel {
         _weatherEntity = WeatherEntity.fromJson(response.body);
       }
     } on Exception catch (error) {
-      print("error: $error");
+
+      Fluttertoast.showToast(
+          msg: "error:$error",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.white70,
+          textColor: Colors.black,
+          fontSize: 16.0);
     }
   }
 
@@ -39,7 +49,14 @@ class AccountViewModel {
         _weatherEntity = WeatherEntity.fromJson(response.body);
       }
     } on Exception catch (error) {
-      print("error: $error");
+      Fluttertoast.showToast(
+          msg: "error:$error",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.white70,
+          textColor: Colors.black,
+          fontSize: 16.0);
     }
   }
 
